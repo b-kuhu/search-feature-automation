@@ -12,5 +12,6 @@ Scenario('search for chocolate cake', async({ I }) => {
   I.waitForNavigation();
   const url = await I.grabCurrentUrl();
   I.seeCurrentUrlEquals(url);
-  I.see('Chocolate Cake');
+  const result = await I.grabTextFrom('//h1[@itemprop="name"]');
+  result.match('Chocolate Cake');
 });
