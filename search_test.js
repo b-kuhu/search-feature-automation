@@ -1,3 +1,5 @@
+const { output } = require("codeceptjs");
+
 Feature('search');
 
 Scenario('search for chocolate cake', async({ I }) => {
@@ -12,6 +14,7 @@ Scenario('search for chocolate cake', async({ I }) => {
   I.waitForNavigation();
   const url = await I.grabCurrentUrl();
   I.seeCurrentUrlEquals(url);
-  const result = await I.grabTextFrom('//h1[@itemprop="name"]');
-  result.match('Chocolate Cake');
+  const result = await I.grabTextFrom('//div[@class="product-card_product-title__32LFp"]');
+  console.log(result);
+  I.see('Chocolate Cake','.product-card_product-title__32LFp');
 });
