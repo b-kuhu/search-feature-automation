@@ -12,8 +12,17 @@ Scenario('search for chocolate cake', async({ I }) => {
   I.waitForNavigation();
   const url = await I.grabCurrentUrl();
   I.seeCurrentUrlEquals(url);
-  const result = await I.grabTextFrom('(//a[@title])[3]');
-  console.log(result.match('Chocolate Cake'));
-  I.see('Chocolate Cake','(//a[@title])[3]');
-  
+  const result = await I.grabTextFrom('(//a[@title])');
+  console.log(result);
+  I.see('Chocolate Cake','//a[@title]');
+  const nextPage= await I.grabAttributeFrom('//a[@title]','href');
+  I.amOnPage(nextPage);
+  I.click('//div[@title="You can select date and time of delivery after providing valid pincode"]');
+  I.click('//div[@aria-label="Wed Sep 28 2022"]');
+  I.wait(3);
+  I.click('//input[@value="FIXTIME_DELIVERY"]');
+  I.wait(3);
+  I.click('//input[@value="10038"]')
+  I.click('//button[@data-testid="addToCartBtn"]');
+  I.wait(5);
 });
