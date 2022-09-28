@@ -1,3 +1,5 @@
+const { output } = require("codeceptjs");
+
 Feature('search');
 
 Scenario('search for chocolate cake', async({ I }) => {
