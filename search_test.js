@@ -14,7 +14,7 @@ Scenario('search for chocolate cake', async({ I }) => {
   I.seeCurrentUrlEquals(url);
   const result = await I.grabTextFrom('(//a[@title])');
   console.log(result);
-  I.see('Chocolate Cake','//a[@title]');
+  I.see('White Rose','//a[@title]');
   const nextPage= await I.grabAttributeFrom('//a[@title]','href');
   I.amOnPage(nextPage);
   I.click('//div[@title="You can select date and time of delivery after providing valid pincode"]');
@@ -22,7 +22,7 @@ Scenario('search for chocolate cake', async({ I }) => {
   I.wait(3);
   I.click('//input[@value="FIXTIME_DELIVERY"]');
   I.wait(3);
-  I.click('//input[@value="10038"]')
+  I.click('//input[@data-testid="time-slot-1"]');
   I.click('//button[@data-testid="addToCartBtn"]');
-  I.wait(5);
+  I.click('//button[@data-testid="buyNowBtn"]');
 });
